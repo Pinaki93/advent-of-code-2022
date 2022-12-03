@@ -14,3 +14,7 @@ fun readFileFromResources(fileName: String): List<String> {
     }
     return lines
 }
+
+inline fun Boolean.then(block: () -> Unit) = apply { if (this) block() }
+inline fun Boolean.otherwiseOrIf(value: Boolean, block: () -> Unit) = apply { if (!this || value) block() }
+inline fun Boolean.otherwise(block: () -> Unit) = apply { if (!this) block() }
